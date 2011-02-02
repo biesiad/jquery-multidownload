@@ -10,3 +10,4 @@ On $('.my_download_trigger') click all marked with multiDownload() links will op
 
 Important: All $('.my_links') elements must have defined "href" attribute. "href" must point to documents that generate proper HTML headers ("Content-Disposition: attachment; filename=my_filename").
 
+Use example: http://biesiad.rushbean.com/multidownload
