@@ -29,7 +29,8 @@
       })
     },
 
-    bind : function( e ) {
+    bind : function( e, options ) {
+      var delay = (options && options.delay) || 2000;
       return this.each(function() {
         $(this).unbind(e);
         $(this).bind(e, function() {
@@ -42,16 +43,16 @@
                 } else {
                     clearInterval(interval);
                 }
-          }, 2000);
+          }, delay);
           return false;  
         })
       })
     }
   }
 
-  $.fn.multiDownload = function( bindEvent ) {
+  $.fn.multiDownload = function( bindEvent, options ) {
     if( bindEvent ) {
-      return methods.bind.apply( this, arguments );
+      return methods.bind.apply( this, arguments, options );
     } else {
       return methods.add.apply( this, arguments );
     }
