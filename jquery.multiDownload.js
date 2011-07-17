@@ -7,11 +7,7 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * * The above copyright notice and this permission notice shall be included in * all copies or substantial portions of the Software.  * * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -22,33 +18,31 @@
 
 (function( $ ){
 
-  var methods = {
-    add : function() { 
-      return this.each(function() {
-        $(this).addClass('multi-download');
-      })
-    },
+  var links = [],
+      methods = {
+        add: function() { 
+          return this.each(function() {
+            $(this).addClass('multi-download-item');
+            links.push(this);
+          });
+        },
 
-    bind : function( e, options ) {
-      var delay = (options && options.delay) || 2000;
-      return this.each(function() {
-        $(this).unbind(e);
-        $(this).bind(e, function() {
-          links = $('.multi-download');
-          var i = 0;
-          var interval = setInterval(function () {
-            if (i < links.length) {
-              window.open($(links[i]).attr('href'), "Download");
-                    i++;
-                } else {
-                    clearInterval(interval);
-                }
-          }, delay);
-          return false;  
-        })
-      })
-    }
-  }
+        bind: function( e, options ) {
+          var delay = options.delay || 1000;
+          return this.each(function () {
+            $(this).addClass('multi-download-trigger');
+            $(this).bind(e, function() {
+              $.each(links, function (i, element) {
+                var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
+                frame.attr('src', $(element).attr('href'));
+                $(element).after(frame);
+                setTimeout(frame.remove, delay);
+              });
+              return false;
+            });
+          });
+        }
+      };
 
   $.fn.multiDownload = function( bindEvent, options ) {
     if( bindEvent ) {
@@ -56,6 +50,6 @@
     } else {
       return methods.add.apply( this, arguments );
     }
-  }
+  };
 
 })( jQuery );

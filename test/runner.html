@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>MultiDownload Test Runner (Jasmine)</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jquery-1.5.2.min.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="../jquery.multidownload.js"></script>
+
+  <!-- include spec files here... -->
+  <!--<script type="text/javascript" src="jquery.multidownload_spec.js"></script>-->
+
+</head>
+<body>
+
+  <script type="text/javascript">
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().execute();
+  </script>
+
+  <a id='1' href="download1.zip">link1</a><br />
+  <a id='2' href="download2.zip">link2</a><br />
+  <a id='3' href="download3.zip">link3</a><br />
+  <a id='t' href="">trigger</a><br />
+
+  <script type="text/javascript" language="javascript" charset="utf-8">
+  //<![CDATA[
+    $('#1').multiDownload();
+    $('#2').multiDownload();
+    $('#3').multiDownload();
+    $('#t').multiDownload('click');
+  //]]>
+  </script>
+  
+</body>
+</html>
