@@ -37,7 +37,7 @@
                 var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
                 frame.attr('src', $(element).attr('href'));
                 $(element).after(frame);
-                setTimeout(frame.remove, delay);
+                setTimeout(function () { frame.remove(); }, delay);
               });
             });
           });

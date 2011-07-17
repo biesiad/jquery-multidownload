@@ -20,35 +20,74 @@ describe("MultiDownload", function() {
     expect(trigger.hasClass('second-class')).toBeTruthy();
   });
 
-  it('adds multi-download-item class to download item', function () {
-    first.multiDownload();
-    third.multiDownload();
-    expect(first.hasClass('multi-download-item')).toBeTruthy();
-    expect(second.hasClass('multi-download-item')).toBeFalsy();
-    expect(third.hasClass('multi-download-item')).toBeTruthy();
-  });
+  describe("elements css classes", function() {
+    it('adds multi-download-item class to download item', function () {
+      first.multiDownload();
+      third.multiDownload();
+      expect(first.hasClass('multi-download-item')).toBeTruthy();
+      expect(second.hasClass('multi-download-item')).toBeFalsy();
+      expect(third.hasClass('multi-download-item')).toBeTruthy();
+    });
 
-  it("adds multi-download-trigger class to download trigger", function() {
-    trigger.multiDownload('click');
-    expect(trigger.hasClass('multi-download-trigger')).toBeTruthy();
-  });
+    it("adds multi-download-trigger class to download trigger", function() {
+      trigger.multiDownload('click');
+      expect(trigger.hasClass('multi-download-trigger')).toBeTruthy();
+    });
+  });  
   
   
-  it('creates download iframes on trigger event', function () {
-    first.multiDownload();
-    third.multiDownload();
-    trigger.multiDownload('click');
-    trigger.click();
+  describe("iframes", function() {
+    it('creates download iframes on trigger event', function () {
+      first.multiDownload();
+      third.multiDownload();
+      trigger.multiDownload('click');
+      trigger.click();
 
-    expect(links.find('.multi-download-item').length).toEqual(2);
-    expect(links.find('iframe.multi-download-frame').length).toEqual(2);
-  });
+      expect(links.find('.multi-download-item').length).toEqual(2);
+      expect(links.find('iframe.multi-download-frame').length).toEqual(2);
+    });
 
-  it("removes download iframes after 1000 miliseconds by default", function() {
-  });
-  
-  it("removes download iframes after specified delay", function() {
-  });
-  
+    it("creates iframe with link href as src", function() {
+      first.multiDownload();
+      trigger.multiDownload('click');
+      trigger.click();
+
+      expect(links.find('iframe.multi-download-frame').attr('src')).toEqual(first.attr('href'));
+    });
+    
+
+    it("removes download iframes after 1000 miliseconds by default", function() {
+      first.multiDownload();
+      trigger.multiDownload('click');
+      runs(function () {
+        trigger.click();
+        expect(links.find('iframe.multi-download-frame').length).toEqual(1);
+      });
+
+      waits(1000);
+      runs(function () {
+        expect(links.find('iframe.multi-download-frame').length).toEqual(0);
+      });
+    });
+    
+    it("removes download iframes after specified delay", function() {
+      first.multiDownload();
+      trigger.multiDownload('click', { delay: 2000 });
+      runs(function () {
+        trigger.click();
+        expect(links.find('iframe.multi-download-frame').length).toEqual(1);
+      });
+
+      waits(1000);
+      runs(function () {
+        expect(links.find('iframe.multi-download-frame').length).toEqual(1);
+      });
+
+      waits(1000);
+      runs(function () {
+        expect(links.find('iframe.multi-download-frame').length).toEqual(0);
+      });
+    });
+  });  
 
 });
