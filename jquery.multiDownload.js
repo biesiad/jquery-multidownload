@@ -28,17 +28,17 @@
         },
 
         bind: function( e, options ) {
-          var delay = options.delay || 1000;
+          var delay = (options && options.delay) || 1000;
           return this.each(function () {
             $(this).addClass('multi-download-trigger');
-            $(this).bind(e, function() {
-              $.each(links, function (i, element) {
+            $(this).bind(e, function(event) {
+              event.preventDefault();
+              $.each(links, function (index, element) {
                 var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
                 frame.attr('src', $(element).attr('href'));
                 $(element).after(frame);
                 setTimeout(frame.remove, delay);
               });
-              return false;
             });
           });
         }
