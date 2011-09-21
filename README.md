@@ -4,17 +4,21 @@ Multi-Download - jQuery plugin
 Plugin allows you to start multiple parallel downloads
 ------------------------------------------------------
 
-* Add links you want to download simultaneously:
+Add links you want to download simultaneously:
+    
     $('.my_links').multiDownloadAdd();
     $('.my_other_links').multiDownloadAdd();
 
-* Remove some if you like to:
+Remove some if you like to:
+    
     $('.my_links').multiDownloadRemove();
 
-* Clear links list:
+Clear links list:
+    
     $.multiDownloadClear();
 
-* Set triggering element and event type on which you want to start:
+Set triggering element and event type on which you want to start:
+
     $('.my_download_trigger').multiDownload('click');
 
 #### On $('.my_download_trigger') click all marked with multiDownload() links will be saved to disc
