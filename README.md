@@ -21,7 +21,6 @@ Set triggering element and event type on which you want to start:
 
     $('.my_download_trigger').multiDownload('click');
 
-### On .my_download_trigger click, all added links will be downloaded
 
 _Important_: All $('.my_links') elements must have defined "href" attribute. 
 "href" must point to documents that generate proper HTML headers ("Content-Disposition: attachment; filename=my_filename").
