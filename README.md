@@ -11,22 +11,16 @@ Add links you want to download simultaneously:
     $('.my_other_links').multiDownloadAdd();
 ```
 
-Remove some if you like to:
+Renove selected links from download list:
 
 ```javascript
     $('.my_links').multiDownloadRemove();
 ```
 
-Clear selected links:
-
-```javascript
-    $('.my_links').multiDownloadClear();
-```
-
-...or clear all links:
+...or remove all links from list:
 
 ``` javascript
-    $('.my_links').multiDownloadClear();
+    $.fn.multiDownloadRemove();
 ```
 
 Set triggering element and event type on which you want to start:
