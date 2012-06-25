@@ -1,20 +1,25 @@
 describe("MultiDownload", function() {
 
-    var first, second, third, links, trigger;
+    var links, trigger;
 
     beforeEach(function() {
-        first = $('<a href="download1.txt" id="first"></a>');
-        second = $('<a href="download1.txt" id="first"></a>');
-        third = $('<a href="download1.txt" id="first"></a>');
+        links = $('<div id="links"></div>');
+        links.append($('<a href="download1.txt" class="my_link" id="link1"></a>'));
+        links.append($('<a href="download2.txt" class="my_link" id="link2"></a>'));
+        links.append($('<a href="download3.txt" class="my_link" id="link3"></a>'));
         trigger = $('<a href="#" id="trigger"></a>');
+        $(document.body).append(links);
+        $(document.body).append(trigger);
+    });
 
-        links = $('<div></div>');
-        links.append(first).append(second).append(third);
+    afterEach(function () {
+        links.remove();
+        trigger.remove();
     });
 
     it('is chainable', function () {
-        first.multiDownloadAdd().addClass('second-class');
-        expect(first.hasClass('second-class')).toBeTruthy();
+        $('#link1').multiDownloadAdd().addClass('second-class');
+        expect($('#link1').hasClass('second-class')).toBeTruthy();
 
         trigger.multiDownload('click').addClass('second-class');
         expect(trigger.hasClass('second-class')).toBeTruthy();
@@ -22,49 +27,46 @@ describe("MultiDownload", function() {
 
     describe("elements css classes", function() {
         it('adds multi-download-item class to download item', function () {
-            first.multiDownloadAdd();
-            third.multiDownloadAdd();
-            expect(first.hasClass('multi-download-item')).toBeTruthy();
-            expect(second.hasClass('multi-download-item')).toBeFalsy();
-            expect(third.hasClass('multi-download-item')).toBeTruthy();
+            $('#link1').multiDownloadAdd();
+            $('#link3').multiDownloadAdd();
+            expect($('#link1').hasClass('multi-download-item')).toBeTruthy();
+            expect($('#link2').hasClass('multi-download-item')).toBeFalsy();
+            expect($('#link3').hasClass('multi-download-item')).toBeTruthy();
         });
 
         it("adds multi-download-trigger class to download trigger", function() {
             trigger.multiDownload('click');
             expect(trigger.hasClass('multi-download-trigger')).toBeTruthy();
         });
-    });  
+    });
 
     describe("multiDownloadAdd", function () {
         it("adds link to download list", function () {
-            first.multiDownloadAdd();
-            third.multiDownloadAdd();
+            $('#link1').multiDownloadAdd();
+            $('#link3').multiDownloadAdd();
             expect(links.find('.multi-download-item').length).toEqual(2);
         });
     });
 
     describe("multiDownloadRemove", function () {
-        it("removes links from download list", function () {
-            first.multiDownloadAdd();
-            third.multiDownloadAdd();
-            first.multiDownloadRemove();
+        it("removes selected links from download list", function () {
+            $('.my_link').multiDownloadAdd();
+            $('#link1, #link3').multiDownloadRemove();
             expect(links.find('.multi-download-item').length).toEqual(1);
         });
-    });
 
-    describe("multiDownloadClear", function () {
-        it("clears download links list", function () {
-            first.multiDownloadAdd();
-            third.multiDownloadAdd();
-            first.multiDownloadClear();
+        it("removes all links from download list", function () {
+            $('#link1').multiDownloadAdd();
+            $('#link3').multiDownloadAdd();
+            $.fn.multiDownloadRemove();
             expect(links.find('.multi-download-item').length).toEqual(0);
         });
     });
 
     describe("iframes", function() {
         it('creates download iframes on trigger event', function () {
-            first.multiDownloadAdd();
-            third.multiDownloadAdd();
+            $('#link1').multiDownloadAdd();
+            $('#link3').multiDownloadAdd();
             trigger.multiDownload('click');
             trigger.click();
 
@@ -73,15 +75,15 @@ describe("MultiDownload", function() {
         });
 
         it("creates iframe with link href as src", function() {
-            first.multiDownloadAdd();
+            $('#link1').multiDownloadAdd();
             trigger.multiDownload('click');
             trigger.click();
 
-            expect(links.find('iframe.multi-download-frame').attr('src')).toEqual(first.attr('href'));
+            expect(links.find('iframe.multi-download-frame').attr('src')).toEqual($('#link1').attr('href'));
         });
 
         it("removes download iframes after 1000 miliseconds by default", function() {
-            first.multiDownloadAdd();
+            $('#link1').multiDownloadAdd();
             trigger.multiDownload('click');
             runs(function () {
                 trigger.click();
@@ -95,7 +97,7 @@ describe("MultiDownload", function() {
         });
 
         it("removes download iframes after specified delay", function() {
-            first.multiDownloadAdd();
+            $('#link1').multiDownloadAdd();
             trigger.multiDownload('click', { delay: 2000 });
             runs(function () {
                 trigger.click();
@@ -112,6 +114,5 @@ describe("MultiDownload", function() {
                 expect(links.find('iframe.multi-download-frame').length).toEqual(0);
             });
         });
-    });  
-
+    });
 });
