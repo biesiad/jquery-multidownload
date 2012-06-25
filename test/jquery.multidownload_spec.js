@@ -22,7 +22,7 @@ describe("MultiDownload", function() {
 
     describe("elements css classes", function() {
         it('adds multi-download-item class to download item', function () {
-            first.multiDownload();
+            first.multiDownloadAdd();
             third.multiDownloadAdd();
             expect(first.hasClass('multi-download-item')).toBeTruthy();
             expect(second.hasClass('multi-download-item')).toBeFalsy();
@@ -63,7 +63,7 @@ describe("MultiDownload", function() {
 
     describe("iframes", function() {
         it('creates download iframes on trigger event', function () {
-            first.multiDownload();
+            first.multiDownloadAdd();
             third.multiDownloadAdd();
             trigger.multiDownload('click');
             trigger.click();
