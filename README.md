@@ -29,10 +29,10 @@ Set triggering element and event type on which you want to start:
 $('.my_download_trigger').multiDownload('click');
 ```
 
-Set custom delay between downloads (might be useful on slow server response):
+Set custom delay between downloads are triggered (might be useful on IE):
 
 ``` javascript
-$('.my_download_trigger').multiDownload('click', { delay: 3000 });
+$('.my_download_trigger').multiDownload('click', { delay: 500 });
 ```
 
 
