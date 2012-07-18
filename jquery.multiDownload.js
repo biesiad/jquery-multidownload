@@ -1,6 +1,7 @@
 (function( $ ){
 
     var methods = {
+        version: "1.3.0",
         add: function () {
             return this.each(function() {
                 $(this).addClass('multi-download-item');
