@@ -14,17 +14,21 @@
         },
 
         bind: function( e, options ) {
-            var delay = (options && options.delay) || 1000;
+            var delay = (options && options.delay) || 100;
             var links = $('.multi-download-item');
             return this.each(function () {
                 $(this).addClass('multi-download-trigger');
                 $(this).bind(e, function (event) {
                     event.preventDefault();
+                    var index = 0;
                     $(links).each(function () {
-                        var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
-                        frame.attr('src', $(this).attr('href'));
-                        $(this).after(frame);
-                        setTimeout(function () { frame.remove(); }, delay);
+                        var that = this;
+                        setTimeout(function () {
+                            var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
+                            frame.attr('src', $(that).attr('href'));
+                            $(that).after(frame);
+                        }, index * delay);
+                        index++;
                     });
                 });
             });
