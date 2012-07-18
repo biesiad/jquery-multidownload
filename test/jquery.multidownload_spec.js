@@ -65,53 +65,34 @@ describe("MultiDownload", function() {
 
     describe("iframes", function() {
         it('creates download iframes on trigger event', function () {
-            $('#link1').multiDownloadAdd();
-            $('#link3').multiDownloadAdd();
-            trigger.multiDownload('click');
-            trigger.click();
+            runs(function () {
+                $('#link1').multiDownloadAdd();
+                $('#link3').multiDownloadAdd();
+                trigger.multiDownload('click');
+                trigger.click();
+            });
 
-            expect(links.find('.multi-download-item').length).toEqual(2);
-            expect(links.find('iframe.multi-download-frame').length).toEqual(2);
+            waits(300);
+
+            runs(function () {
+                var linksCount = links.find('.multi-download-item').length;
+                var framesCount = links.find('iframe.multi-download-frame').length;
+                expect(linksCount).toEqual(2);
+                expect(framesCount).toEqual(2);
+            });
         });
 
         it("creates iframe with link href as src", function() {
-            $('#link1').multiDownloadAdd();
-            trigger.multiDownload('click');
-            trigger.click();
-
-            expect(links.find('iframe.multi-download-frame').attr('src')).toEqual($('#link1').attr('href'));
-        });
-
-        it("removes download iframes after 1000 miliseconds by default", function() {
-            $('#link1').multiDownloadAdd();
-            trigger.multiDownload('click');
             runs(function () {
+                $('#link1').multiDownloadAdd();
+                trigger.multiDownload('click');
                 trigger.click();
-                expect(links.find('iframe.multi-download-frame').length).toEqual(1);
             });
 
-            waits(1000);
-            runs(function () {
-                expect(links.find('iframe.multi-download-frame').length).toEqual(0);
-            });
-        });
+            waits(300);
 
-        it("removes download iframes after specified delay", function() {
-            $('#link1').multiDownloadAdd();
-            trigger.multiDownload('click', { delay: 2000 });
             runs(function () {
-                trigger.click();
-                expect(links.find('iframe.multi-download-frame').length).toEqual(1);
-            });
-
-            waits(1000);
-            runs(function () {
-                expect(links.find('iframe.multi-download-frame').length).toEqual(1);
-            });
-
-            waits(1000);
-            runs(function () {
-                expect(links.find('iframe.multi-download-frame').length).toEqual(0);
+                expect(links.find('iframe.multi-download-frame').attr('src')).toEqual($('#link1').attr('href'));
             });
         });
     });
