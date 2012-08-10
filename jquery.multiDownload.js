@@ -16,13 +16,12 @@
 
         bind: function( e, options ) {
             var delay = (options && options.delay) || 100;
-            var links = $('.multi-download-item');
             return this.each(function () {
                 $(this).addClass('multi-download-trigger');
                 $(this).bind(e, function (event) {
                     event.preventDefault();
                     var index = 0;
-                    $(links).each(function () {
+                    $('.multi-download-item').each(function () {
                         var that = this;
                         setTimeout(function () {
                             var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
