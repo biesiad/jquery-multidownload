@@ -35,9 +35,9 @@
         }
     };
 
-    $.fn.multiDownload = function( bindEvent, options, group ) {
+    $.fn.multiDownload = function( bindEvent, group, options ) {
         if( bindEvent ) {
-            return methods.bind.apply( this, arguments, options, group );
+            return methods.bind.apply( this, arguments, group, options );
         } else {
             console.log('multiDownload() is obsolete. Please use multiDownloadAdd for adding new link.');
             return methods.add.apply( this, arguments, group );
