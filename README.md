@@ -40,7 +40,11 @@ _Important_: All $('.my_links') elements must have defined "href" attribute.
 
 -----
 
-You can add also a group to the functions. All the links on the same group will be donwloaded together.
+Grouping links
+------------------------------------------------------
+
+You can also define groups for the links. 
+To define a group, add the group name to the functions. All the links on the same group will be donwloaded together.
 
 ```javascript
 $('.my_links').multiDownloadAdd( groupName );
