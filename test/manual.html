@@ -7,16 +7,36 @@
   <script type="text/javascript" src="../jquery.multidownload.js"></script>
 </head>
 <body>
+  <h1>MultiDownload manual Tests</h1>
+
     <a id='1' href="download1.zip" target="_blank">link1</a><br />
     <a id='2' href="download2.zip">link2</a><br />
     <a id='3' href="download3.zip">link3</a><br />
+    
+  <h2>Download without group</h2>
     <a id='t' href="">trigger</a><br />
 
+  <h2>Group functionality</h2>
+    <a id='group1' href="">trigger only link2 & link3</a><br />
+    <a id='group2' href="">trigger only link1 & link3</a><br />
+
   <script type="text/javascript" language="javascript" charset="utf-8">
+    //no group defined
     $('#1').multiDownloadAdd();
     $('#2').multiDownloadAdd();
     $('#3').multiDownloadAdd();
     $('#t').multiDownload('click');
+
+    //group functionality
+    //Group1
+    $('#2').multiDownloadAdd('group1');
+    $('#3').multiDownloadAdd('group1');
+    $('#group1').multiDownload('click', 'group1' );
+
+    //Group2
+    $('#1').multiDownloadAdd('group2');
+    $('#3').multiDownloadAdd('group2');
+    $('#group2').multiDownload('click', 'group2' );
   </script>
 
 </body>
