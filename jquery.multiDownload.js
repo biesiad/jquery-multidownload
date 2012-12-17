@@ -2,26 +2,26 @@
 
     var methods = {
         version: "1.3.0",
-        add: function () {
+        add: function ( group ) {
             return this.each(function() {
-                $(this).addClass('multi-download-item');
+                $(this).addClass('multi-download-item-' + group );
             });
         },
 
-        remove: function () {
-            var links = this.length ? this : $('.multi-download-item');
-            links.removeClass('multi-download-item');
-            return $('.multi-download-item');
+        remove: function ( group ) {
+            var links = this.length ? this : $('.multi-download-item-' + group);
+            links.removeClass('multi-download-item-' + group);
+            return $('.multi-download-item-' + group);
         },
 
-        bind: function( e, options ) {
+        bind: function( e, group, options ) {
             var delay = (options && options.delay) || 100;
             return this.each(function () {
-                $(this).addClass('multi-download-trigger');
+                $(this).addClass('multi-download-trigger-' + group);
                 $(this).bind(e, function (event) {
                     event.preventDefault();
                     var index = 0;
-                    $('.multi-download-item').each(function () {
+                    $('.multi-download-item-' + group).each(function () {
                         var that = this;
                         setTimeout(function () {
                             var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
@@ -35,20 +35,20 @@
         }
     };
 
-    $.fn.multiDownload = function( bindEvent, options ) {
+    $.fn.multiDownload = function( bindEvent, options, group ) {
         if( bindEvent ) {
-            return methods.bind.apply( this, arguments, options );
+            return methods.bind.apply( this, arguments );
         } else {
             console.log('multiDownload() is obsolete. Please use multiDownloadAdd for adding new link.');
             return methods.add.apply( this, arguments );
         }
     };
 
-    $.fn.multiDownloadAdd = function () {
+    $.fn.multiDownloadAdd = function ( group ) {
         return methods.add.apply( this, arguments );
     };
 
-    $.fn.multiDownloadRemove = function () {
+    $.fn.multiDownloadRemove = function ( group ) {
         return methods.remove.apply( this, arguments );
     };
 

@@ -35,7 +35,22 @@ Set custom delay between downloads are triggered (might be useful on IE):
 $('.my_download_trigger').multiDownload('click', { delay: 500 });
 ```
 
-
 _Important_: All $('.my_links') elements must have defined "href" attribute.
 "href" must point to documents that generate proper HTML headers ("Content-Disposition: attachment; filename=my_filename").
 
+-----
+
+Grouping links
+------------------------------------------------------
+
+You can also define groups for the links. 
+To define a group, add the group name to the functions. All the links on the same group will be donwloaded together.
+
+```javascript
+$('.my_links').multiDownloadAdd( groupName );
+$('.my_other_links').multiDownloadAdd( groupName );
+$('.my_links').multiDownloadRemove( groupName );
+$.fn.multiDownloadRemove( groupName );
+$('.my_download_trigger').multiDownload( 'click', groupName );
+$('.my_download_trigger').multiDownload( 'click', groupName, { delay: 500 });
+```
