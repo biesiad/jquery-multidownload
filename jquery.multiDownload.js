@@ -35,21 +35,21 @@
         }
     };
 
-    $.fn.multiDownload = function( bindEvent, group, options ) {
+    $.fn.multiDownload = function( bindEvent, options, group ) {
         if( bindEvent ) {
-            return methods.bind.apply( this, arguments, group, options );
+            return methods.bind.apply( this, arguments );
         } else {
             console.log('multiDownload() is obsolete. Please use multiDownloadAdd for adding new link.');
-            return methods.add.apply( this, arguments, group );
+            return methods.add.apply( this, arguments );
         }
     };
 
     $.fn.multiDownloadAdd = function ( group ) {
-        return methods.add.apply( this, arguments, group );
+        return methods.add.apply( this, arguments );
     };
 
     $.fn.multiDownloadRemove = function ( group ) {
-        return methods.remove.apply( this, arguments, group );
+        return methods.remove.apply( this, arguments );
     };
 
 })( jQuery );
