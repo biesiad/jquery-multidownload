@@ -54,3 +54,9 @@ $.fn.multiDownloadRemove( groupName );
 $('.my_download_trigger').multiDownload( 'click', groupName );
 $('.my_download_trigger').multiDownload( 'click', groupName, { delay: 500 });
 ```
+
+
+Development
+==============================
+
+Please run spec/runner.html to check if old API is still working and add specs for new code.
