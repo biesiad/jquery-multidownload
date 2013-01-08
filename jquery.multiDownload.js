@@ -4,24 +4,27 @@
         version: "1.3.0",
         add: function ( group ) {
             return this.each(function() {
-                $(this).addClass('multi-download-item-' + group );
+                var groupTag = group ? "-" + group : "";
+                $(this).addClass('multi-download-item' + groupTag);
             });
         },
 
         remove: function ( group ) {
-            var links = this.length ? this : $('.multi-download-item-' + group);
-            links.removeClass('multi-download-item-' + group);
-            return $('.multi-download-item-' + group);
+            var groupTag = group ? "-" + group : "";
+            var links = this.length ? this : $('.multi-download-item' + groupTag);
+            links.removeClass('multi-download-item' + groupTag);
+            return $('.multi-download-item' + groupTag);
         },
 
         bind: function( e, group, options ) {
             var delay = (options && options.delay) || 100;
             return this.each(function () {
-                $(this).addClass('multi-download-trigger-' + group);
+                var groupTag = group ? "-" + group : "";
+                $(this).addClass('multi-download-trigger' + groupTag);
                 $(this).bind(e, function (event) {
                     event.preventDefault();
                     var index = 0;
-                    $('.multi-download-item-' + group).each(function () {
+                    $('.multi-download-item' + groupTag).each(function () {
                         var that = this;
                         setTimeout(function () {
                             var frame = $('<iframe style="display: none;" class="multi-download-frame"></iframe>');
