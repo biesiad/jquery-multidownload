@@ -11,7 +11,7 @@ $('.my_links').multiDownloadAdd();
 $('.my_other_links').multiDownloadAdd();
 ```
 
-Renove selected links from download list:
+Remove selected links from download list:
 
 ```javascript
 $('.my_links').multiDownloadRemove();
@@ -23,7 +23,7 @@ Set triggering element and event type on which you want to start:
 $('.my_download_trigger').multiDownload('click');
 ```
 
-Set custom delay between downloads are triggered (might be useful on IE):
+Set custom delay between downloads that are triggered (might be useful on IE):
 
 ``` javascript
 $('.my_download_trigger').multiDownload('click', { delay: 500 });
@@ -44,7 +44,7 @@ $('.my-links').multiDownloadAdd('myGroup');
 $('.my-other-links').multiDownloadAdd('myGroup');
 
 $('.my-links').multiDownloadRemove('myGroup');
-$('my-links.multiDownloadRemove('myGroup');
+$('my-links').multiDownloadRemove('myGroup');
 
 $('.my-download-trigger').multiDownload('click', 'myGroup');
 $('.my-download-trigger').multiDownload('click', 'myGroup', { delay: 500 });
@@ -54,4 +54,4 @@ $('.my-download-trigger').multiDownload('click', 'myGroup', { delay: 500 });
 Development
 ===========
 
-Please run spec/runner.html to check if old API is still working and add specs for new code.
+Please run spec/runner.html to check if old API still works and add specs for new code.
