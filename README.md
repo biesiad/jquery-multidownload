@@ -44,7 +44,7 @@ $('.my-links').multiDownloadAdd('myGroup');
 $('.my-other-links').multiDownloadAdd('myGroup');
 
 $('.my-links').multiDownloadRemove('myGroup');
-$('my-links').multiDownloadRemove('myGroup');
+$('.my-links').multiDownloadRemove('myGroup');
 
 $('.my-download-trigger').multiDownload('click', 'myGroup');
 $('.my-download-trigger').multiDownload('click', 'myGroup', { delay: 500 });
