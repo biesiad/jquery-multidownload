@@ -1,7 +1,7 @@
 Multi-Download - jQuery plugin
 ==============================
 
-Plugin allows you to start multiple parallel downloads
+Basics
 ------------------------------------------------------
 
 Add links you want to download simultaneously:
