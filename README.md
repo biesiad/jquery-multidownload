@@ -1,11 +1,9 @@
-Multi-Download - jQuery plugin
-==============================
+# Multi-Download - jQuery plugin
 
-How to use
-----------
+## How to use
 
-Add links
-----------
+
+### Add links
 
 Add links you want to download simultaneously:
 
@@ -21,8 +19,8 @@ $('.my-links').multiDownloadAdd('myGroup');
 $('.my-other-links').multiDownloadAdd('myGroup');
 ```
 
-Remove links
-------------
+
+### Remove links
 
 Remove selected links from download list:
 
@@ -33,7 +31,6 @@ $('.my_links').multiDownloadRemove();
 Remove selected links from the group:
 
 ```javascript
-$('.my-links').multiDownloadRemove('myGroup');
 $('.my-links').multiDownloadRemove('myGroup');
 ```
 
@@ -53,24 +50,14 @@ _Important_: All $('.my_links') elements must have defined "href" attribute.
 "href" must point to documents that generate proper HTML headers ("Content-Disposition: attachment; filename=my_filename").
 
 
-More options
-------------
+### More options
+
 Set custom delay between downloads that are triggered (might be useful on IE):
 
 ``` javascript
 $('.my_download_trigger').multiDownload('click', { delay: 500 });
 ```
 
-You can also define groups for the links.
-To define a group, add the group name to the functions. All the links on the same group will be donwloaded together.
-
-```javascript
-
-
-```
-
-
-Development
-===========
+## Development
 
 Please run spec/runner.html to check if old API still works and add specs for new code.
