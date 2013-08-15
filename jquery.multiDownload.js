@@ -19,6 +19,7 @@
                 group = null;
             }
 
+            var type = (options && options.type) || "iframe";
             var triggerDelay = (options && options.delay) || 100;
             var cleaningDelay = (options && options.cleaningDelay) || 1000;
             var elements = $('.' + methods._itemClass(group));
@@ -28,11 +29,33 @@
             triggers.bind(event, function (e) {
                 e.preventDefault();
                 elements.each(function (index, link) {
-                    methods._createIFrame(link, index * triggerDelay, cleaningDelay);
+                    if(type == "adownload")
+                        methods._createADownload(link, index * triggerDelay, cleaningDelay);
+                    else
+                        methods._createIFrame(link, index * triggerDelay, cleaningDelay);
                 });
             });
 
             return this;
+        },
+        
+        _createADownload: function(link, triggerDelay, cleaningDelay) {
+            var url = $(link).attr('href');
+            //using the last section of the url for the name not always works so having the name set in the data attribute is mandatory
+            var name = $(link).data("name");
+            if(!name) {
+                methods._createIFrame(link, triggerDelay, cleaningDelay);
+                return;
+            }   
+            try {
+                var aelement = document.createElement('a');
+                aelement.download = name;
+                aelement.href = url;
+                aelement.click();
+            }
+            catch(e) {
+                methods._createIFrame(link, triggerDelay, cleaningDelay);
+            }
         },
 
         _createIFrame: function (link, triggerDelay, cleaningDelay) {
