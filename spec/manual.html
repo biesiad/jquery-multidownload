@@ -9,35 +9,27 @@
 <body>
   <h1>MultiDownload manual Tests</h1>
 
-    <a id='1' href="download1.tar.gz" target="_blank">link1</a><br />
-    <a id='2' href="download2.tar.gz">link2</a><br />
-    <a id='3' href="download3.tar.gz">link3</a><br />
-    
-  <h2>Download without group</h2>
-    <a id='trigger' href="">trigger</a><br />
+    <a id='1' class="link" href="download1.tar.gz" target="_blank">link1</a><br />
+    <a id='2' class="link" href="download2.tar.gz">link2</a><br />
+    <a id='3' class="link" href="download3.tar.gz">link3</a><br />
 
-  <h2>Download by group</h2>
-    <a id='trigger_group1' href="">trigger only link2 & link3</a><br />
-    <a id='trigger_group2' href="">trigger only link1 & link3</a><br />
+  <h2>Download</h2>
+    <a id='download' href="">download</a><br />
 
   <h2>Download with delay (3s)</h2>
-    <a id='trigger_delayed' href="">trigger delayed</a><br />
+    <a id='download_delayed' href="">download delayed</a><br />
 
   <script type="text/javascript" language="javascript" charset="utf-8">
-    $('#1').multiDownloadAdd();
-    $('#2').multiDownloadAdd();
-    $('#3').multiDownloadAdd();
-    $('#trigger').multiDownload('click');
+    $('#download').click(function (e) {
+      e.preventDefault();
+      $('.link').multiDownload();
+    });
 
-    $('#2').multiDownloadAdd('group1');
-    $('#3').multiDownloadAdd('group1');
-    $('#trigger_group1').multiDownload('click', 'group1' );
 
-    $('#1').multiDownloadAdd('group2');
-    $('#3').multiDownloadAdd('group2');
-    $('#trigger_group2').multiDownload('click', 'group2' );
-
-    $('#trigger_delayed').multiDownload('click', { delay: 3000 });
+    $('#download_delayed').click(function (e) {
+      e.preventDefault();
+      $('.link').multiDownload({ delay: 3000 });
+    });
   </script>
 </body>
 </html>

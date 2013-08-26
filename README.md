@@ -5,58 +5,33 @@
 
 ### Add links
 
-Add links you want to download simultaneously:
+Select links to resources you want to download simultaneously and call multiDownload function:
 
-```javascript
-$('.my_links').multiDownloadAdd();
-$('.my_other_links').multiDownloadAdd();
-```
+``` html
+<a href="document1.zip" class="document">document 1</a>
+<a href="document2.zip" class="document">document 2</a>
+<a href="document3.zip" class="document">document 3</a>
 
-Add grouped links:
+<a href="#" id="download_all">download all</a>
 
-```javascript
-$('.my-links').multiDownloadAdd('myGroup');
-$('.my-other-links').multiDownloadAdd('myGroup');
-```
-
-
-### Remove links
-
-Remove selected links from download list:
-
-```javascript
-$('.my_links').multiDownloadRemove();
-```
-
-Remove selected links from the group:
-
-```javascript
-$('.my-links').multiDownloadRemove('myGroup');
-```
-
-Define download trigger:
-
-``` javascript
-$('.my_download_trigger').multiDownload('click');
-```
-
-Define download trigger for the group:
-
-``` javascript
-$('.my-download-trigger').multiDownload('click', 'myGroup');
+$('#download_all').click(function (event) {
+    event.preventDefault();
+    $('.document').multiDownload();
+});
 ```
 
 _Important_: All $('.my_links') elements must have defined "href" attribute.
 "href" must point to documents that generate proper HTML headers ("Content-Disposition: attachment; filename=my_filename").
 
 
-### More options
+### Options
 
 Set custom delay between downloads that are triggered (might be useful on IE):
 
 ``` javascript
-$('.my_download_trigger').multiDownload('click', { delay: 500 });
+$('.my_download_trigger').multiDownload({ delay: 500 });
 ```
+
 
 ## Development
 
