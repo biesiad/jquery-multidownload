@@ -1,8 +1,6 @@
 (function ($) {
 
     var methods = {
-        version: "3.0.0",
-
         _download: function (options) {
             var triggerDelay = (options && options.delay) || 100;
             var cleaningDelay = (options && options.cleaningDelay) || 1000;
