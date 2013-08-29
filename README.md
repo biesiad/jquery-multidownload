@@ -1,4 +1,4 @@
-# Multi-Download - jQuery plugin
+# multiDownload - jQuery plugin for simultaneous downloads
 
 ## How to use
 
