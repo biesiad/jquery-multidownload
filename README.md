@@ -1,9 +1,6 @@
-# multiDownload
-
-## jQuery plugin for simultaneous downloads
+# jQuery plugin for simultaneous downloads
 
 ## How to use
-
 
 ### Add links
 
