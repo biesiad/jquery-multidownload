@@ -29,5 +29,7 @@
     "homepage": "https://github.com/biesiad/multiDownload",
     "docs": "https://github.com/biesiad/multiDownload",
     "download": "https://github.com/biesiad/multiDownload/archive/master.zip",
-    "dependencies": {}
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
 }
