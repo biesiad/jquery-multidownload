@@ -1,3 +1,5 @@
+![Google Analitycs beacon](https://ga-beacon.appspot.com/UA-46903362-1/multiDownload/README.md)
+
 # jQuery plugin for simultaneous downloads
 
 ## How to use
