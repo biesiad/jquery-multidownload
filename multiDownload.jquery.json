@@ -13,23 +13,16 @@
         "name": "Grzegorz Biesiadecki",
         "url": "https://github.com/biesiad"
     },
+    "main": "jquery-multidownload.js",
     "maintainers": [
         {
             "name": "Grzegorz Biesiadecki",
             "email": "gbiesiadecki@gmail.com"
         }
     ],
-    "licenses": [
-        {
-        "type": "MIT",
-        "url": "https://github.com/biesiad/multiDownload/blob/master/LICENSE"
-    }
-    ],
+    "license": "MIT",
     "bugs": "https://github.com/biesiad/multiDownload/issues",
     "homepage": "https://github.com/biesiad/multiDownload",
     "docs": "https://github.com/biesiad/multiDownload",
-    "download": "https://github.com/biesiad/multiDownload/archive/master.zip",
-    "dependencies": {
-        "jquery": ">=1.5"
-    }
+    "download": "https://github.com/biesiad/multiDownload/archive/master.zip"
 }
