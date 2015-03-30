@@ -1,8 +1,29 @@
 # jQuery plugin for simultaneous downloads
 
-## How to use
+## How to add it to your project
 
-### Add links
+### With script tag
+
+``` html
+<script src="jquery.multidownload.js"></script>
+```
+
+### with browserify:
+
+Add to your project
+
+``` bash
+  npm install jquery-multidownload
+```
+
+and load with require
+
+``` javascript
+global.jQuery = require('jquery')
+require('jquery-multidownload')
+```
+
+### How to use it
 
 Select links to resources you want to download simultaneously and call multiDownload function:
 
