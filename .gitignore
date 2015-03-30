@@ -17,4 +17,4 @@ public/*/cache/*
 ~Gemfile.lock
 database.yml
 koala.yml
-
+node_modules
