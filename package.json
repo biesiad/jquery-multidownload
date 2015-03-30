@@ -2,7 +2,7 @@
   "name": "jquery-multidownload",
   "title": "Multiple files simultaneous download",
   "description": "jQuery plugin multiple files simultaneous download.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": {
     "name": "Grzegorz Biesiadecki",
     "url": "https://github.com/biesiad"
