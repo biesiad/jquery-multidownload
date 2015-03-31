@@ -1,0 +1,14 @@
+{
+  "name": "gridly",
+  "version": "1.0.0",
+  "main": [ "./javascripts/jquery.whatever.js","./stylesheets/jquery.whatever.css" ],
+  "ignore":
+  [
+    "test",
+    "*jquery.json",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": { "jquery": "latest" }
+}
