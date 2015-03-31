@@ -1,7 +1,7 @@
 {
-  "name": "gridly",
-  "version": "1.0.0",
-  "main": [ "./javascripts/jquery.whatever.js","./stylesheets/jquery.whatever.css" ],
+  "name": "jquery-multidownload",
+  "version": "4.0.1",
+  "main": [ "./jquery-multidownload.js" ],
   "ignore":
   [
     "test",
