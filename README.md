@@ -52,7 +52,6 @@ Set custom delay between downloads that are triggered (might be useful on IE):
 $('.my_download_trigger').multiDownload({ delay: 500 });
 ```
 
-
 ## Development
 
 Please run spec/runner.html to check if old API still works and add specs for new code.
